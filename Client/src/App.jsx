@@ -7,9 +7,9 @@ import Home from './pages/Home';
 import Events from './pages/Events';
 import Cart from './pages/Cart';
 import About from './pages/About';
-import Login from './pages/Login';
+import Auth from './pages/Auth';
 import Footer from './components/Footer';
-// import Signup from './pages/Signup';
+
 
 function App() {
   return (
@@ -22,18 +22,16 @@ function App() {
            <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-purple-600/10 blur-[100px] rounded-full" />
         </div>
 
-        {/* 2. The Fixed Layer (Navbar) */}
         <Navbar />
-
-        {/* 3. The Content Layer (Pages) */}
+        
+        {/* different routes */}
         <main className="pt-20 md:pt-24 relative z-10">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<Events />} />
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<Login />} />
-          {/* <Route path="/signup" element={<Signup />} /> */}
+          <Route path="/auth" element={<Auth />} />
         </Routes>
         </main>
         <Footer />
