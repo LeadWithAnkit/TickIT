@@ -28,7 +28,7 @@ function Auth() {
       localStorage.setItem('tickit_user', JSON.stringify(data.user));
 
       navigate('/');
-      window.location.reload(); // Refresh to update Navbar state
+      window.location.reload(); // Refresh to update Navbar
     } catch (err) {
       setError(err.response?.data?.message || 'Authentication failed. Please try again.');
     } finally {
