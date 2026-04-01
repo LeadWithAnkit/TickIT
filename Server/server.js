@@ -14,8 +14,13 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true
+    origin: [
+        "http://localhost:5173", // Local Vite Dev Server
+        "https://tickit-1-3e3l.onrender.com" 
+    ],
+    credentials: true, 
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 // DB
