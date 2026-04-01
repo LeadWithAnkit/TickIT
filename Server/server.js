@@ -17,7 +17,6 @@ app.use(cookieParser());
 
 app.use(cors({
     origin: [
-        "http://localhost:5173", // Local Vite Server
         "https://tickit-1-3e3l.onrender.com"  //frontend
     ],
     credentials: true, 
