@@ -9,46 +9,33 @@ dotenv.config();
 
 const app = express();
 
-// Trust the first proxy (Render uses proxies)
+// Trust proxy (needed for deployment like Render)
 app.set("trust proxy", 1);
 
-// --- CORS CONFIGURATION ---
-const allowedOrigins = [
-  "https://tickit-1-3e3l.onrender.com" // Your exact frontend URL
-];
-
+// Simple CORS setup
 app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or Postman)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true, 
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  origin: [
+    "http://localhost:5173",
+    "https://tickit-1-3e3l.onrender.com"
+  ],
+  credentials: true
 }));
 
-// --- MIDDLEWARE ---
+// Middlewares
 app.use(express.json());
 app.use(cookieParser());
 
-// --- DATABASE ---
+// Connect DB
 connectDB();
 
-// --- ROUTES ---
-
+// Routes
 app.get("/", (req, res) => {
   res.send("TickIt API is running...");
 });
 
 app.use("/api/auth", authRoutes);
 
-// --- SERVER ---
+// Start server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
