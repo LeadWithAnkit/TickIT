@@ -42,7 +42,7 @@ function Cart() {
             </div>
             <div className="flex justify-between">
               <span className="text-gray-400">Platform Fee</span>
-              <span>₹50</span>
+              <span>₹25</span>
             </div>
             <div className="flex justify-between border-t border-white/10 pt-4 text-lg font-bold">
               <span>Total</span>
